@@ -2,12 +2,25 @@ name: CI tests
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
   pull_request:
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v5
+      - uses: actions/checkout@v5
+
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+
+      - name: Test with pytest
+        run: |
+          pytest
