@@ -1,2 +1,5 @@
-def find_average(numbers):
-    return sum(numbers)/len(numbers)
+from collections.abc import Sequence
+
+
+def find_average(numbers: Sequence[int]) -> float:
+    return sum(numbers) / len(numbers)
